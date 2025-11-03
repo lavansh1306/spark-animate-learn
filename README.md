@@ -1,73 +1,121 @@
-# Welcome to your Lovable project
+# PEER-POINT
 
-## Project info
+A full-stack web application for sharing and discussing doubts (Spark Doubt platform).
 
-**URL**: https://lovable.dev/projects/177574b9-24ca-4f4e-afcc-c760ad8b9a55
+## What is this project about
 
-## How can I edit this code?
+PEER-POINT is built to help students and learners share academic questions (doubts), get community answers, and discuss solutions collaboratively. It focuses on quick, searchable threads of questions with support for:
 
-There are several ways of editing your application.
+- Creating and browsing doubt posts (text, code snippets, images)
+- Commenting and threaded discussion for follow-up questions
+- Voting or reacting to useful answers (community moderation)
+- User authentication and role-based access (sign up / login, protected endpoints)
 
-**Use Lovable**
+The goal is to make it fast and easy for students to get help, track recurring problems, and build a searchable knowledge base of solved doubts.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/177574b9-24ca-4f4e-afcc-c760ad8b9a55) and start prompting.
+This repository contains a React + Vite frontend (TypeScript, Tailwind, shadcn UI components) and a Java Spring Boot backend (Java 17, Spring Boot 3.x) with JPA and JWT-based auth.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Where to find the code
 
-**Use your preferred IDE**
+- Frontend: `./src` (React + TypeScript + Vite)
+- Backend: `./backend/src/main/java` (Spring Boot application)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Tech stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Frontend
+	- Vite
+	- React 18 (TypeScript)
+	- Tailwind CSS
+	- shadcn-ui (Radix + custom UI primitives)
+	- React Router, React Query
 
-Follow these steps:
+- Backend
+	- Java 17
+	- Spring Boot 3.x (web, data-jpa, security, validation)
+	- JPA/Hibernate
+	- PostgreSQL (production), H2 (dev/test)
+	- JWT (io.jsonwebtoken)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Dev / Tooling
+	- Node.js, npm/yarn (frontend)
+	- Maven (backend)
+	- ESLint, TypeScript, Tailwind, Vite
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Key dependencies
 
-# Step 3: Install the necessary dependencies.
-npm i
+Frontend (selected from `package.json`)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+- Runtime
+	- react ^18.3.1
+	- react-dom ^18.3.1
+	- @tanstack/react-query ^5.83.0
+	- react-router-dom ^6.30.1
+	- tailwindcss-animate ^1.0.7
+	- framer-motion ^12.23.24
+	- date-fns ^3.6.0
+	- zod ^3.25.76
+	- lucide-react ^0.462.0
+	- recharts ^2.15.4
+	- sonner ^1.7.4
+
+- UI / Radix (shadcn UI uses these)
+	- @radix-ui/react-* (accordion, dialog, popover, toast, etc.)
+	- class-variance-authority, clsx
+
+- DevDependencies (selected)
+	- vite ^5.4.19
+	- typescript ^5.8.3
+	- tailwindcss ^3.4.17
+	- @vitejs/plugin-react-swc ^3.11.0
+	- eslint ^9.32.0
+
+For the full, exact lists see `package.json` in the repo root.
+
+Backend (selected from `backend/pom.xml`)
+
+- Spring Boot
+	- org.springframework.boot:spring-boot-starter-web
+	- org.springframework.boot:spring-boot-starter-data-jpa
+	- org.springframework.boot:spring-boot-starter-security
+	- org.springframework.boot:spring-boot-starter-validation
+
+- Databases
+	- org.postgresql:postgresql (runtime)
+	- com.h2database:h2 (runtime, dev/test)
+
+- Auth / JWT
+	- io.jsonwebtoken:jjwt-api / jjwt-impl / jjwt-jackson (0.12.3)
+
+- Helpers / tooling
+	- org.projectlombok:lombok (optional)
+	- org.springframework.boot:spring-boot-devtools (optional, runtime)
+
+For the complete backend dependency list and versions, see `backend/pom.xml`.
+
+## Quick start (development)
+
+1) Frontend
+
+```powershell
+cd "c:\Users\Aditya Mishra\Desktop\APP project\spark-animate-learn"
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+2) Backend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+From the repository root (requires Maven):
 
-**Use GitHub Codespaces**
+```powershell
+cd backend
+mvn spring-boot:run
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+(If you prefer the wrapper and it's present: `./mvnw spring-boot:run`)
 
-## What technologies are used for this project?
+## Notes
 
-This project is built with:
+- Database configuration is in `backend/src/main/resources/application.properties` (or `target/classes/application.properties` for packaged builds).
+- Adjust environment variables and `application.properties` to point to PostgreSQL in production.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/177574b9-24ca-4f4e-afcc-c760ad8b9a55) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+If you want, I can also add a short CONTRIBUTING or Developer Setup section with step-by-step environment setup and common env vars to set (DB URL, JWT secret, etc.).
